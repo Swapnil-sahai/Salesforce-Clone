@@ -1,0 +1,317 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family :'Lato';
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+#main{
+  height: 100%;
+  width: 100%;
+  background-color: rgb(251, 251, 251);
+}
+
+#header{
+  height: 13.75vh; /*view-port height(vh) used to define in term of screen rather than depending upon parent*/
+  width: 100vw; /*view-port width*/
+  background-color: white;
+  position: fixed; /*because of fixed postion, page 1 will go underneath the header so to fix that fakeheader is created*/
+  display: flex;
+  align-items: center;
+  z-index: 5;
+}
+
+#fakeheader{
+  /* this is created so it stays underneath the header(cuz it is fixed) and don't mess up the 90% occupancy of page1 */
+  height: 13.75vh; 
+  width: 100vw; 
+  background-color: purple;
+}
+
+.text{
+  
+  margin: 20px;
+  color: #032d60;
+  font-size: 17px;
+  font-weight: bold;
+  
+}
+.text:hover{
+  color: #1e7cef;
+}
+
+#logo{
+  height: 50%;
+  background-color: white;
+  margin-left: 40px;
+  margin-right: 20px;
+}
+#logo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  
+}
+
+#contact{
+  margin-left: 250px;
+  color: #032d60;
+  
+}
+#contact:hover{
+  color: #1e7cef;
+}
+
+.icon{
+  height: 40px;
+  width: 40px;
+  /* margin-left : 30px; */
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.icon:hover{
+  background-color: #eaf5fe;
+}
+
+#search{
+  margin-left: 20px;
+}
+
+
+#login{
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 50px;
+  color: #032d60;
+  
+}
+#login:hover{
+  background-color: #eaf5fe;
+  color: #1e7cef;
+}
+
+#page1{
+  height: 86.25%;
+  width: 100%;
+  background-color: rgb(136, 224, 221);
+  display: flex;
+}
+#page1 img{
+  position:absolute;
+  height: 86.25%;
+  width: 100%;
+  z-index: 1;
+}
+#left{
+  height: 100%;
+  width: 50%;
+  z-index: 1;
+}
+#right{
+  height: 100%;
+  width: 50%;
+  display: flex;
+  z-index: 1;
+}
+
+#info{
+  height: 80%;
+  width: 70%;
+  margin-left: 16%;
+  /* margin-right: 20px;  */
+  /* margin-top: 30px; */
+  /* margin-bottom: 30px;  */
+  padding-top: 70px;
+  word-spacing: 4px;
+}
+#info p1{
+  font-size: 48px;
+  font-weight: 800;
+  color: #032d60;
+  
+}
+#info p2{
+  font-size: 48px;
+  font-weight: 800;
+  color: #0d9dda;
+}
+#info p3{
+  font-size: 20px;
+  color: black;
+  line-height: 1.5;
+}
+#info p4{
+  font-size: 20px;
+  color: black;
+  line-height: 1.5;
+}
+#btn{
+  height: 8%;
+  width: 20%;
+  margin-left: 16%;
+  margin-top: 5%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  color: white;
+  background-color: #0176d3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+#btn:hover{
+  background-color: #032d60;
+  color: white;
+}
+
+#vidCard{
+  height: 348px;
+  width: 620px;
+  margin-top: 146px;
+  margin-left: 22px;
+  background-color: orangered;
+  border-radius: 10px;
+  overflow: hidden; /*so that edges of video don't exceed the edge of the parent vid card*/
+}
+#vidCard video{
+  width: 100%;
+  height: auto;
+  
+  
+}
+
+
+#page2{
+  height: 86.25%;
+  width: 100%;
+  /* background-color: aquamarine; */
+ 
+}
+#page2 img{
+  position:absolute;
+  height: 100%;
+  /* height: 86.25%; */
+  width: 100%;
+  z-index: -1;
+}
+#first{
+  z-index: 1;
+  height: 480px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  gap: 39px;
+  /* background-color: white; */
+
+}
+.card{
+  height: 427px;
+  width: 292px;
+  background-color: white;
+  margin-bottom: -50px;
+  border-radius: 20px;
+  box-shadow: 0px 1px 5px 0px gray ;
+  overflow: hidden;
+}
+
+.imgBox{
+  z-index: 2;
+  height: 40%;
+  width: 100%;
+  overflow: hidden; /* ensures zoomed image doesn’t spill out */
+  /* background-color: orange; */
+  position: relative; /* makes it a reference point for ::after */
+}
+.imgBox img{
+  height: 100%;
+  width: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* after acts like a sticker on the box so we are crearing an after element for our imgBox div and then
+creating the shadows etc in it but initially keeping it's opacity to 0 so it isn't visible initially but when 
+we hover over it, the opacity becomes 1 so and it starts appearing on top of our imgBox div, 
+also with pointer-events tag we made sure it doesn't interfere with out mouse click but only appears
+on top */
+.imgBox::after {
+  content: "";            /* creates an empty element */
+  position: absolute;     /* sits on top of .imgBox */
+  inset: 0;               /* stretch it to cover the whole box-> shorthand = top:0; right:0; bottom:0; left:0 */
+  box-shadow: inset 0 40px 40px -20px rgba(0, 0, 0, 0.6); /* inner shadow */
+  opacity: 0;             /* hidden at first */
+  transition: opacity 0.3s ease-in-out; /* smooth fade in/out */
+  pointer-events: none;   /* so you can still click the image normally */
+}
+
+/* When hovering the WHOLE card (not just the image): */
+.card:hover .imgBox img{
+  transform: scale(1.10);
+}
+.card:hover .imgBox::after {
+  opacity: 1;             /* becomes visible and fades the inner shadow in on hover */
+}
+
+.chead{
+  /* background-color: red; */
+  font-size: 20px;
+  font-weight: 700;
+  padding-left: 30px;
+  margin-top: 50px;
+  color: #032d60;
+  
+}
+.chead:hover{
+  color: #0176d3;
+}
+.cbody{
+  font-size: 16px;
+  height: 57px;
+  /* background-color: greenyellow; */
+  padding-left: 30px;
+  margin-top: 25px;
+  
+}
+.ctail{
+  font-size: 16px;
+  font-weight:600;
+  text-decoration: underline;
+  /* background-color: chocolate; */
+  padding-left: 30px;
+  margin-top: 44px;
+  color: #032d60;
+}
+.ctail:hover{
+  text-decoration:none;
+  color: #0b5cab;
+}
+
+button{
+  height: 49px;
+  width: 229px;
+  /* margin-top: 64px; */
+  margin-left: 645px;
+  margin-top: 40px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0176d3;
+  border: 2px solid #0176d3;
+  background-color: transparent;
+}
+button:hover{
+  color: #032d60;
+  background-color: #eaf5fe;
+  border: 2px solid #032d60;
+}
